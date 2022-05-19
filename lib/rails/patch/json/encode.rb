@@ -11,10 +11,10 @@ module Rails::Patch::Json::Encode
         json = MultiJson::dump(json.as_json(options), options) unless json.kind_of?(String)
 
         if options[:callback].present?
-          self.content_type ||= Mime::JS
+          self.content_type ||= Mime[:js]
           "#{options[:callback]}(#{json})"
         else
-          self.content_type ||= Mime::JSON
+          self.content_type ||= Mime[:json]
           json
         end
       end
